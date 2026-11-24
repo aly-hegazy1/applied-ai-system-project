@@ -1,0 +1,1510 @@
+{
+  "summary": {
+    "label": "offline + glitched game",
+    "games": 30,
+    "wins": 26,
+    "win_rate_pct": 86.7,
+    "avg_guesses_to_win": 5.04,
+    "wins_within_optimal_bound_pct": 100.0,
+    "coach_turns": 161,
+    "first_try_valid_pct": 98.8,
+    "suggestions_rejected": 0,
+    "recovered_by_retry": 0,
+    "fallbacks": 0,
+    "invalid_guesses_played": 0,
+    "guesses_misled_by_false_hints": 20,
+    "avg_model_confidence": 1.0,
+    "games_with_lying_hints": 4,
+    "glitch_detected_in_lying_games": 2,
+    "false_glitch_alarms": 0
+  },
+  "games": [
+    {
+      "difficulty": "Easy",
+      "secret": 4,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 2,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 4,
+      "outcome": "glitch_detected",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 3,
+      "invalid_played": 0,
+      "misled": 5,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 33,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": null,
+          "source": "glitch",
+          "confidence": null,
+          "model_calls": 0,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 95,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 97,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 95,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 9,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 7,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 8,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 9,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 32,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 29,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 5,
+      "outcome": "won",
+      "guesses": 2,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 95,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 97,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 95,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 14,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 13,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 14,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 12,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 76,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 76,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 14,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 13,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 14,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 5,
+      "outcome": "glitch_detected",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 3,
+      "invalid_played": 0,
+      "misled": 5,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 33,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": null,
+          "source": "glitch",
+          "confidence": null,
+          "model_calls": 0,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 4,
+      "outcome": "lost",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 3,
+      "invalid_played": 0,
+      "misled": 5,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 33,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 3,
+      "outcome": "won",
+      "guesses": 4,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 2,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 28,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 30,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 30,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 17,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 16,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 17,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 78,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 4,
+      "outcome": "lost",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 3,
+      "invalid_played": 0,
+      "misled": 5,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 33,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 26,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 26,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 92,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 91,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 92,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 54,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 62,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 56,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 53,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 54,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 29,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 15,
+      "outcome": "won",
+      "guesses": 2,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 76,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 76,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 36,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 35,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 36,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    }
+  ]
+}

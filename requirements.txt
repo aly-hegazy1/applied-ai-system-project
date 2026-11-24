@@ -1,3 +1,5 @@
 streamlit>=1.21.0
 altair<5
 pytest
+# AI Coach. Only needed for the Claude backend; offline mode runs without it.
+anthropic>=2.0

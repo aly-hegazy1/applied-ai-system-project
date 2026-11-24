@@ -1,0 +1,1571 @@
+{
+  "summary": {
+    "label": "chaos(offline, p=0.3)",
+    "games": 30,
+    "wins": 30,
+    "win_rate_pct": 100.0,
+    "avg_guesses_to_win": 5.2,
+    "wins_within_optimal_bound_pct": 100.0,
+    "coach_turns": 156,
+    "first_try_valid_pct": 67.9,
+    "suggestions_rejected": 57,
+    "recovered_by_retry": 31,
+    "fallbacks": 19,
+    "invalid_guesses_played": 0,
+    "guesses_misled_by_false_hints": 0,
+    "avg_model_confidence": 1.0,
+    "games_with_lying_hints": 0,
+    "glitch_detected_in_lying_games": 0,
+    "false_glitch_alarms": 0
+  },
+  "games": [
+    {
+      "difficulty": "Easy",
+      "secret": 4,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 3,
+          "rejections": [
+            "57 contradicts the hints: the secret must be between 1 and 9.",
+            "10 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 2,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "Guess 'fifty' is not an integer.",
+            "5 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 4,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 6,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 95,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 1 and 100."
+          ]
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 88,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 76 and 100.",
+            "Guess 'fifty' is not an integer.",
+            "137 contradicts the hints: the secret must be between 76 and 100."
+          ]
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 97,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 95,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 9,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 7,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 8,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 9,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 32,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "31 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 32,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 29,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 3,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 29 and 30.",
+            "137 contradicts the hints: the secret must be between 29 and 30."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 5,
+      "outcome": "won",
+      "guesses": 2,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "10 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 95,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 97,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 95,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 14,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "50 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 13,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 14,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 12,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 1 and 100."
+          ]
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 76,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 3,
+          "rejections": [
+            "Guess 'fifty' is not an integer.",
+            "81 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 76,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "78 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 14,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 13,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 14,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 5,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 1 and 100."
+          ]
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 12,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 1 and 24.",
+            "Guess 'fifty' is not an integer.",
+            "25 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 6,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 4,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 1 and 49."
+          ]
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 6,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 1 and 11."
+          ]
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 3,
+      "outcome": "won",
+      "guesses": 4,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 5,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "57 contradicts the hints: the secret must be between 1 and 9."
+          ]
+        },
+        {
+          "guess": 2,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "57 contradicts the hints: the secret must be between 1 and 4."
+          ]
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 28,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 30,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 37,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 30,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 17,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 16,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 17,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 78,
+      "outcome": "won",
+      "guesses": 5,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 76 and 100."
+          ]
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "81 was already guessed; repeating it wastes an attempt.",
+            "81 was already guessed; repeating it wastes an attempt.",
+            "81 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 4,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "50 was already guessed; repeating it wastes an attempt.",
+            "Guess 'fifty' is not an integer.",
+            "50 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 12,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 6,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 3,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 4,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 1 and 20."
+          ]
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 18,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 26,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 3,
+          "rejections": [
+            "50 was already guessed; repeating it wastes an attempt.",
+            "137 contradicts the hints: the secret must be between 1 and 49."
+          ]
+        },
+        {
+          "guess": 37,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "25 was already guessed; repeating it wastes an attempt.",
+            "Guess 'fifty' is not an integer.",
+            "25 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "37 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 28,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 26,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 92,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 94,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 91,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        },
+        {
+          "guess": 92,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 18,
+      "outcome": "won",
+      "guesses": 3,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 11 and 20."
+          ]
+        },
+        {
+          "guess": 18,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 2,
+          "rejections": [
+            "Guess 'fifty' is not an integer."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 54,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 62,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "75 was already guessed; repeating it wastes an attempt."
+          ]
+        },
+        {
+          "guess": 56,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 53,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 54,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 29,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 28,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 29,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 3,
+          "rejections": [
+            "28 was already guessed; repeating it wastes an attempt.",
+            "31 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Easy",
+      "secret": 15,
+      "outcome": "won",
+      "guesses": 2,
+      "optimal_bound": 5,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 10,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 1 and 20."
+          ]
+        },
+        {
+          "guess": 15,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        }
+      ]
+    },
+    {
+      "difficulty": "Normal",
+      "secret": 76,
+      "outcome": "won",
+      "guesses": 6,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 75,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "0 contradicts the hints: the secret must be between 51 and 100."
+          ]
+        },
+        {
+          "guess": 88,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 81,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 78,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 76,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 3,
+          "rejections": [
+            "137 contradicts the hints: the secret must be between 76 and 77.",
+            "Guess 'fifty' is not an integer.",
+            "137 contradicts the hints: the secret must be between 76 and 77."
+          ]
+        }
+      ]
+    },
+    {
+      "difficulty": "Hard",
+      "secret": 36,
+      "outcome": "won",
+      "guesses": 7,
+      "optimal_bound": 7,
+      "lies": 0,
+      "invalid_played": 0,
+      "misled": 0,
+      "turns": [
+        {
+          "guess": 50,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 25,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 37,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 31,
+          "source": "fallback",
+          "confidence": null,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 34,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 35,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 1,
+          "rejections": []
+        },
+        {
+          "guess": 36,
+          "source": "model",
+          "confidence": 1.0,
+          "model_calls": 2,
+          "rejections": [
+            "35 was already guessed; repeating it wastes an attempt."
+          ]
+        }
+      ]
+    }
+  ]
+}

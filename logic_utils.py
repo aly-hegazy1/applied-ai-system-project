@@ -22,6 +22,14 @@ def get_range_for_difficulty(difficulty: str):
     return 1, 100
 
 
+ATTEMPT_LIMITS = {"Easy": 6, "Normal": 8, "Hard": 7}
+
+
+def get_attempt_limit(difficulty: str) -> int:
+    """Attempts allowed per round. Shared by app.py and evaluate.py."""
+    return ATTEMPT_LIMITS.get(difficulty, ATTEMPT_LIMITS["Normal"])
+
+
 def parse_guess(raw: str, low: int = None, high: int = None):
     """
     Parse user input into an int guess.
