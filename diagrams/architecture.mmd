@@ -1,0 +1,52 @@
+flowchart TD
+    %% ---------- Inputs ----------
+    Player([👤 Player]) -->|types a guess| UI[Streamlit UI<br/>app.py]
+    Player -->|clicks 'Ask the coach'| UI
+    Dev([🧑‍💻 Developer]) -->|python coach_cli.py| CLI[Coach CLI<br/>coach_cli.py]
+
+    %% ---------- Game ----------
+    UI -->|valid guess| Logic[Game logic<br/>logic_utils.py<br/>parse_guess · check_guess · update_score]
+    Logic -->|Too High / Too Low / Win| Feedback[(Hint history<br/>guess, outcome pairs)]
+
+    %% ---------- Agent ----------
+    Feedback -->|GameState: range, hints,<br/>attempts left — NO secret| Agent
+    CLI -->|GameState| Agent
+
+    subgraph Agent[AI Coach agent — coach/agent.py]
+        direction TB
+        Plan[1. PLAN<br/>compute feasible interval] -->|interval empty| Glitch[🐛 Report glitch:<br/>hints contradict]
+        Plan -->|interval ok| Act[2. ACT<br/>ask model for a guess]
+        Act --> Check{3. CHECK<br/>validator.py}
+        Check -->|rejected + reason<br/>tries left| Act
+        Check -->|rejected 3×<br/>or model error| Fallback[4. GUARD<br/>binary-search midpoint]
+        Check -->|accepted| Accept[✅ Verified suggestion]
+    end
+
+    Act <-->|prompt + rejection feedback /<br/>JSON guess, reasoning, confidence| Models
+
+    subgraph Models[Model backends — coach/models.py]
+        Claude[ClaudeCoachModel<br/>Claude API, JSON schema output]
+        Offline[OfflineCoachModel<br/>rules-based, no key needed]
+        Chaos[ChaosCoachModel<br/>fault injection for testing]
+    end
+
+    %% ---------- Outputs ----------
+    Accept --> Out[Suggestion + reasoning +<br/>confidence + agent trace]
+    Fallback --> Out
+    Glitch --> Out
+    Out -->|shown in UI / CLI| Player
+    Out -->|'Play' button| Logic
+
+    Agent -.->|every step| Log[(logs/coach.log)]
+
+    %% ---------- Testing & human review ----------
+    subgraph QA[Testing and evaluation]
+        Pytest[pytest<br/>tests/ — 52 tests]
+        Eval[evaluate.py<br/>full games: offline · chaos · glitched · claude]
+        Reports[(reports/*.json)]
+        Eval --> Reports
+    end
+    Pytest -.->|unit + integration checks| Agent
+    Eval -.->|plays complete games| Agent
+    Reports -->|human review| Dev
+    Log -->|human audit| Dev

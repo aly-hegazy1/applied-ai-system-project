@@ -1,157 +1,358 @@
-# 🎮 Game Glitch Investigator: The Impossible Guesser
+# 🎮 Glitchy Guesser + 🤖 AI Coach
 
-## 🚨 The Situation
+**A number-guessing game with an agentic AI coach that checks its own advice
+before it shows it to you, and notices when the game is lying.**
 
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
+The coach is built on Claude. It reads the hints the game has given and
+recommends the next guess. A deterministic validator checks every
+recommendation against those hints. If the AI gets it wrong, the agent sends
+the reason back and asks it to try again. If it still can't produce a valid
+guess, a provably safe fallback takes over. If the hints contradict each other,
+the coach refuses to guess and reports that the game is glitched.
 
-- You can't win.
-- The hints lie to you.
-- The secret number seems to have commitment issues.
+Why it matters: people tend to trust an AI that sounds confident. This project
+is a small, fully measurable example of the opposite approach. It treats
+language-model output as a *proposal* and has code verify it before anyone
+acts on it.
 
-## 🛠️ Setup
+---
 
-1. Install dependencies: `pip install -r requirements.txt`
-2. Run the broken app: `python -m streamlit run app.py`
+## 📜 Origin: the Module 1-3 project
 
-## 🕵️‍♂️ Your Mission
+This repo grew out of **Game Glitch Investigator: The Impossible Guesser**
+(CodePath AI110, Modules 1-3). That project was a Streamlit number-guessing
+game an AI had "written and abandoned". It was deliberately full of bugs:
+inverted hints, a secret compared as a *string* on every other turn, a New Game
+button that killed the app, and scoring that rewarded wrong answers. My job was
+to find and fix those bugs, refactor the logic into a testable module, and
+prove each fix with regression tests. I documented 7 bugs and grew the test
+suite from 3 to 19. The full write-up of that work is still in
+[reflection.md](reflection.md).
 
-1. **Play the game.** Open the "Developer Debug Info" tab in the app to see the secret number. Try to win.
-2. **Find the State Bug.** Why does the secret number change every time you click "Submit"? Ask ChatGPT: *"How do I keep a variable from resetting in Streamlit when I click a button?"*
-3. **Fix the Logic.** The hints ("Higher/Lower") are wrong. Fix them.
-4. **Refactor & Test.** - Move the logic into `logic_utils.py`.
-   - Run `pytest` in your terminal.
-   - Keep fixing until all tests pass!
+This version keeps the fixed game and adds an AI system on top of it. The
+original bug hunt also inspired the coach's most interesting feature: glitch
+detection.
 
-## 📝 Document Your Experience
+---
 
-**What the game is for.** Glitchy Guesser is a Streamlit number-guessing game.
-The app picks a secret number inside a range set by the difficulty, and the
-player has a limited number of attempts to find it. After each guess the game
-says whether the guess was too high or too low, adjusts a score, and ends the
-round on a win or when the attempts run out. A Developer Debug Info panel shows
-the secret, so the game can be tested without guessing blind.
+## 🏗️ Architecture overview
 
-**Bugs found.** Seven, documented in full with reproduction steps in
-[reflection.md](reflection.md):
+Source: [diagrams/architecture.mmd](diagrams/architecture.mmd). GitHub renders it below.
 
-| # | Bug | Effect |
-|---|-----|--------|
-| 1 | Hint text inverted | `"Too High"` was paired with `"📈 Go HIGHER!"`, so following the hint walked you away from the secret |
-| 2 | Secret cast to `str` on even attempts | `guess > secret` threw `TypeError`, a silent `except` retried it as a **string** compare, and `"9" > "50"` is `True` — the same guess flipped answers between turns |
-| 3 | New Game never reset `status` | After a win `status` stayed `"won"`, `st.stop()` fired on every rerun, and the app was dead until restarted |
-| 4 | Attempt counter off by one, and incremented before validation | Normal showed 7 attempts instead of 8, and a typo burned a turn |
-| 5 | `update_score` rewarded wrong guesses | `"Too High"` **added** 5 points on even attempts; the win payout double-counted the current turn |
-| 6 | Range was decorative | Banner always said "1 and 100"; bounds were never enforced; Hard (1-50, 5 attempts) was mathematically unwinnable |
-| 7 | `logic_utils.py` was all stubs | Every test errored, and the tests compared a string against a 2-tuple |
-
-**Fixes applied.**
-
-- **Refactored** `get_range_for_difficulty`, `parse_guess`, `check_guess` and
-  `update_score` out of `app.py` into [logic_utils.py](logic_utils.py).
-  `app.py` is now UI and session state only, which is what makes the logic
-  importable by tests.
-- **Corrected the hint direction** and split the player-facing text into
-  `get_hint_message()`, so `check_guess` returns just the outcome string that
-  the starter tests assert on.
-- **Deleted the `except TypeError` fallback** instead of porting it, and removed
-  the `str()` cast in `app.py` that caused it. A bad type now raises loudly
-  rather than silently comparing numbers alphabetically.
-- **Added `start_new_round()`** as the single place a round begins, called by
-  both first-time setup and the New Game button, so all five session keys are
-  always reset together.
-- **Moved the attempt increment** inside the branch that accepted a valid guess,
-  and seeded the counter at 0.
-- **Made both wrong directions cost the same**, and fixed the win payout to
-  `100 - 10 * attempt_number`.
-- **Enforced the range** in `parse_guess` via optional `low`/`high` bounds, made
-  the banner report the real range, and retuned Hard so it is winnable.
-- **Grew the suite from 3 to 19 tests.** Each bug-targeting test was run against
-  the pre-fix code with `git show HEAD:app.py` and confirmed to fail there
-  first — a test that passes on broken code proves nothing.
-
-## 📸 Demo Walkthrough
-
-A full round on **Normal** difficulty. The secret is **42** (visible because the
-Developer Debug Info panel is expanded), the range is **1-100**, and the player
-gets **8 attempts**.
-
-1. **The game opens.** The banner reads *"Guess a number between 1 and 100.
-   Attempts left: 8"* — the range matches the difficulty in the sidebar, and the
-   full 8 attempts are available before anything has been guessed.
-2. **The player types `abc` and clicks Submit.** The game shows
-   *"That is not a number."* The attempt counter **stays at 8** and nothing is
-   added to the history — a typo costs nothing.
-3. **The player types `500` and clicks Submit.** The game shows
-   *"Guess must be between 1 and 100."* Again **no attempt is consumed**,
-   because an out-of-range number was never a real guess.
-4. **Guess of 40 → "Too Low", hint "📈 Go HIGHER!"** Attempt 1 of 8 is used,
-   attempts left drops to 7, and the score moves from 0 to **-5**.
-5. **Guess of 70 → "Too High", hint "📉 Go LOWER!"** The hint points back down
-   toward 42. Attempt 2, attempts left 6, score **-10**.
-6. **Guess of 50 → "Too High", hint "📉 Go LOWER!"** The player now knows the
-   answer is between 40 and 50. Attempt 3, attempts left 5, score **-15**.
-7. **Guess of 42 → "Win", 🎉 Correct!** Balloons fire and the game reports
-   *"You won! The secret was 42."* Winning on attempt 4 pays
-   `100 - 10 * 4 = 60` points, so the score goes from -15 to **45**.
-8. **The round locks.** Submitting again shows *"You already won. Start a new
-   game to play again."* — the finished round cannot be played past.
-9. **The player clicks New Game 🔁.** A fresh secret is drawn *from the current
-   difficulty's range*, and attempts, score, status and history all reset. The
-   banner is back to *"Attempts left: 8"* and the game is immediately playable
-   again.
-10. **Losing works too.** If the 8 attempts run out without a correct guess, the
-    game reports *"Out of attempts! The secret was ..."* and locks the same way,
-    and New Game clears it.
-
-**Scoring rules:** a wrong guess costs 5 points in either direction. A win pays
-`100 - 10 * attempt_number`, with a floor of 10 — so winning on the first guess
-is worth 90 and guessing sooner is always worth more.
-
-**Difficulty:** Easy is 1-20 with 6 attempts, Normal is 1-100 with 8, and Hard
-is 1-100 with 7. Every one of those is winnable with perfect play — Hard is
-exactly `ceil(log2(100)) = 7` guesses, so it allows no wasted attempt.
-
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
-
-## 🧪 Test Results
-
-```
-$ python -m pytest tests/ -v
-============================= test session starts ==============================
-platform darwin -- Python 3.13.9, pytest-9.1.1, pluggy-1.5.0 -- /Users/alyhegazy/miniconda3/bin/python3
-cachedir: .pytest_cache
-rootdir: /Users/alyhegazy/Desktop/CodePath /ai110-module1show-gameglitchinvestigator-starter
-plugins: anyio-4.15.1
-collecting ... collected 19 items
-
-tests/test_game_logic.py::test_winning_guess PASSED                      [  5%]
-tests/test_game_logic.py::test_guess_too_high PASSED                     [ 10%]
-tests/test_game_logic.py::test_guess_too_low PASSED                      [ 15%]
-tests/test_game_logic.py::test_too_high_hint_tells_player_to_go_lower PASSED [ 21%]
-tests/test_game_logic.py::test_too_low_hint_tells_player_to_go_higher PASSED [ 26%]
-tests/test_game_logic.py::test_single_digit_guess_below_secret_is_too_low PASSED [ 31%]
-tests/test_game_logic.py::test_three_digit_guess_above_secret_is_too_high PASSED [ 36%]
-tests/test_game_logic.py::test_same_guess_always_gives_the_same_outcome PASSED [ 42%]
-tests/test_game_logic.py::test_string_secret_raises_instead_of_comparing_as_text PASSED [ 47%]
-tests/test_game_logic.py::test_too_high_costs_points_on_an_even_attempt PASSED [ 52%]
-tests/test_game_logic.py::test_both_wrong_directions_cost_the_same PASSED [ 57%]
-tests/test_game_logic.py::test_winning_sooner_scores_higher PASSED       [ 63%]
-tests/test_game_logic.py::test_win_on_first_attempt_scores_90 PASSED     [ 68%]
-tests/test_game_logic.py::test_win_score_never_drops_below_10 PASSED     [ 73%]
-tests/test_game_logic.py::test_guess_above_the_range_is_rejected PASSED  [ 78%]
-tests/test_game_logic.py::test_negative_guess_is_rejected PASSED         [ 84%]
-tests/test_game_logic.py::test_guess_on_the_boundary_is_accepted PASSED  [ 89%]
-tests/test_game_logic.py::test_parse_guess_still_works_without_bounds PASSED [ 94%]
-tests/test_game_logic.py::test_every_difficulty_is_actually_winnable PASSED [100%]
-
-============================== 19 passed in 0.01s ==============================
+```mermaid
+flowchart TD
+    Player([👤 Player]) -->|types a guess| UI[Streamlit UI<br/>app.py]
+    Player -->|clicks 'Ask the coach'| UI
+    Dev([🧑‍💻 Developer]) -->|python coach_cli.py| CLI[Coach CLI<br/>coach_cli.py]
+    UI -->|valid guess| Logic[Game logic<br/>logic_utils.py]
+    Logic -->|Too High / Too Low / Win| Feedback[(Hint history)]
+    Feedback -->|GameState: range, hints,<br/>attempts left — NO secret| Agent
+    CLI -->|GameState| Agent
+    subgraph Agent[AI Coach agent — coach/agent.py]
+        direction TB
+        Plan[1. PLAN<br/>compute feasible interval] -->|interval empty| Glitch[🐛 Report glitch]
+        Plan -->|interval ok| Act[2. ACT<br/>ask model for a guess]
+        Act --> Check{3. CHECK<br/>validator.py}
+        Check -->|rejected + reason| Act
+        Check -->|rejected 3× or model error| Fallback[4. GUARD<br/>binary-search midpoint]
+        Check -->|accepted| Accept[✅ Verified suggestion]
+    end
+    Act <-->|prompt + feedback / JSON guess| Models
+    subgraph Models[Model backends — coach/models.py]
+        Claude[ClaudeCoachModel]
+        Offline[OfflineCoachModel]
+        Chaos[ChaosCoachModel<br/>fault injection]
+    end
+    Accept --> Out[Suggestion + reasoning +<br/>confidence + trace]
+    Fallback --> Out
+    Glitch --> Out
+    Out --> Player
+    Out -->|'Play' button| Logic
+    Agent -.-> Log[(logs/coach.log)]
+    subgraph QA[Testing and evaluation]
+        Pytest[pytest — 52 tests]
+        Eval[evaluate.py — full games]
+        Reports[(reports/*.json)]
+        Eval --> Reports
+    end
+    Pytest -.-> Agent
+    Eval -.-> Agent
+    Reports -->|human review| Dev
+    Log -->|human audit| Dev
 ```
 
-Before any fixes this suite reported `3 failed in 0.02s` — every starter test
-errored on `NotImplementedError` because the logic still lived in `app.py` and
-`logic_utils.py` was a set of stubs.
+**How data flows.** The player's guesses go through the game logic, which
+produces hints (`Too High` / `Too Low` / `Win`). When the player asks for help,
+the app builds a `GameState` containing the range, the hints and the attempts
+left. **The secret is not in it.** The `CoachAgent` then runs four steps:
 
-## 🚀 Stretch Features
+| Step | Component | What happens |
+|------|-----------|--------------|
+| 1. Plan | `coach/validator.py` | Computes the interval of secrets still consistent with every hint. If it is empty, the hints contradict each other, so the coach reports a **glitch** and does not call the model. |
+| 2. Act | `coach/models.py` | Asks the model for a guess. Claude gets only the raw hints (not the computed interval), so it has to reason, and replies in schema-constrained JSON: `guess`, `reasoning`, `confidence`. |
+| 3. Check | `coach/validator.py` | Rejects anything that is not an integer, repeats a guess, or contradicts a hint. The rejection reason goes back to the model and it tries again (up to 3 tries). |
+| 4. Guard | `coach/agent.py` | If every try fails, or the API errors, refuses, or times out, the coach falls back to the binary-search midpoint. That move is always valid and keeps a win guaranteed. |
 
-- [ ] [If you choose to complete Challenge 4, describe the Enhanced UI changes here — a screenshot is optional]
+**Where humans and testing check the AI.** The player sees the reasoning, a
+confidence score, a badge saying whether the guess is *verified* or a
+*fallback*, and an expandable trace of every plan/act/check step. Every step is
+also written to `logs/coach.log`. `pytest` covers the logic, and `evaluate.py`
+plays hundreds of complete games and writes JSON reports for a human to review.
+
+---
+
+## ⚙️ Setup
+
+Requires Python 3.10+.
+
+```bash
+git clone https://github.com/aly-hegazy1/applied-ai-system-project.git
+cd applied-ai-system-project
+python -m venv .venv && source .venv/bin/activate   # optional but recommended
+pip install -r requirements.txt
+```
+
+**Optional: turn on the Claude backend.** Without a key, everything runs in
+offline mode with a rules-based coach, so the app, CLI, tests and evaluator all
+work with no credentials.
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...      # the app then defaults to Claude
+```
+
+**Run it:**
+
+```bash
+python -m streamlit run app.py           # the game + AI Coach panel
+python coach_cli.py --hints 50:high 25:low   # one suggestion in the terminal
+python -m pytest                         # 52 tests, no network needed
+python evaluate.py --suite               # reliability report → reports/
+python evaluate.py --model claude --games 9  # measure the real Claude coach
+```
+
+---
+
+## 💬 Sample interactions
+
+All of the output below is copied from real runs. These runs use the offline
+and fault-injection backends, so anyone can reproduce them exactly without an
+API key. Run the same commands with `--model claude` to see Claude's own
+wording; the agent loop and validator behave identically.
+
+**1. Mid-game advice.** Range 1-100; 50 was too high and 25 too low.
+
+```
+$ python coach_cli.py --range 1 100 --hints 50:high 25:low --attempts-left 6
+Agent trace:
+  PLAN: range 1-100, 2 hint(s), 6 attempt(s) left -> secret is in 26-49 (24 possible)
+  ACT #1: offline proposed 37 (confidence 1.00)
+  CHECK #1: accepted - Consistent with every hint so far.
+
+Suggested guess : 37
+Reasoning       : The secret must be between 26 and 49; 37 splits that range in half.
+Source          : model (offline)
+Confidence      : 1.00
+Win guaranteed  : True
+```
+
+**2. The AI misbehaves and the guardrails catch it.** The chaos backend is
+forced to fail every time (`--fault-rate 1.0`). Its first answer is not a
+number, and its second is an error. Neither reaches the player.
+
+```
+$ python coach_cli.py --model chaos --fault-rate 1.0 --range 1 20 --hints 10:low
+Agent trace:
+  PLAN: range 1-20, 1 hint(s), 8 attempt(s) left -> secret is in 11-20 (10 possible)
+  ACT #1: chaos(offline, p=1.0) proposed 'fifty' (confidence 0.90)
+  CHECK #1: rejected - Guess 'fifty' is not an integer.
+  ACT #2: chaos(offline, p=1.0) failed: Injected fault: backend returned nothing usable.
+  FALLBACK: using binary-search midpoint 15
+
+Suggested guess : 15
+Reasoning       : The AI's suggestion could not be verified, so this is the safe default: 15 is the midpoint of the 11-20 range that is still possible.
+Source          : fallback (chaos(offline, p=1.0))
+Confidence      : n/a
+Win guaranteed  : True
+```
+
+**3. The game lies and the coach notices.** "50 is too high" and "60 is too
+low" cannot both be true. The coach refuses to guess instead of picking one.
+
+```
+$ python coach_cli.py --range 1 100 --hints 50:high 60:low
+Agent trace:
+  PLAN: range 1-100, 2 hint(s), 8 attempt(s) left -> secret is in 61-49 (0 possible)
+  GLITCH: no number is consistent with every hint; refusing to guess
+
+GLITCH DETECTED: These hints contradict each other - no secret could produce all of them. The game's feedback is wrong, so any guess would be a coin flip.
+```
+
+**4. Bad input is rejected with a clear message.**
+
+```
+$ python coach_cli.py --hints 5:sideways
+coach_cli.py: error: argument --hints: bad hint '5:sideways': use GUESS:high or GUESS:low, e.g. 50:high
+```
+
+**In the app.** Clicking **Ask the coach for a hint 💡** shows, for example,
+*"**Try 75.** The secret must be between 51 and 100; 75 splits that range in
+half."*, plus a `✅ verified suggestion` badge and the remaining range. A
+**Play 75 ▶️** button submits that guess. I scripted the app with Streamlit's
+`AppTest` to play a whole Normal round using only the coach's suggestions. It
+won on attempt 7 with secret 52 (50 → 75 → 62 → 56 → 53 → 51 → 52), which is
+within the 7-guess worst case for 1-100.
+
+---
+
+## 🧪 Testing and reliability
+
+### Summary
+
+**52 of 52 tests pass. Across 120 evaluated games the coach never played an
+invalid guess.** That holds even when the model was wrong 60% of the time: the
+validator rejected 119 bad suggestions, retries recovered 44 turns, and the
+fallback covered the other 50. The one weakness is the deliberately glitched
+game. The coach caught the lying hints in only **2 of the 4** games where the
+game lied. In the other two the lies did not collide until after the attempts
+ran out (details in [model_card.md](model_card.md)).
+
+### Automated tests: `python -m pytest`
+
+```
+$ python -m pytest
+....................................................                     [100%]
+52 passed in 1.22s
+```
+
+The complete verbose output is in [reports/pytest_output.txt](reports/pytest_output.txt).
+
+| Test file | Tests | What it covers |
+|-----------|-------|----------------|
+| `tests/test_game_logic.py` | 19 | The original Module 1-3 bug regressions: hint direction, type safety, scoring, range enforcement, winnability |
+| `tests/test_coach.py` | 33 | Interval math, validator rules, retry-with-feedback, fallback, glitch detection, the trace, the Claude adapter with a fake client (request shape, JSON parsing, refusal handling, confidence clamping), a real SDK client pointed at a dead port (must fall back, not crash), and end-to-end evaluation thresholds |
+
+### Evaluation harness: `python evaluate.py --suite`
+
+The harness plays complete games against the real game logic, cycling
+Easy/Normal/Hard with seeded secrets so the results are reproducible.
+`invalid_guesses_played` is audited independently of the agent's own
+validator. It replays the *true* hints, so a bug in the validator would still
+show up there.
+
+```
+$ python evaluate.py --suite
+```
+
+| Metric | Offline coach | Chaos, 30% faults | Chaos, 60% faults | Glitched game (Bug 2 replayed) |
+|--------|--------------:|------------------:|------------------:|-------------------------------:|
+| Games | 30 | 30 | 30 | 30 |
+| Win rate | **100%** | **100%** | **100%** | 86.7% |
+| Avg guesses to win | 5.2 | 5.2 | 5.2 | 5.04 |
+| Wins within binary-search bound | 100% | 100% | 100% | 100% |
+| Suggestions valid on first try | 100% | 67.9% | 39.7% | 98.8% |
+| Suggestions rejected by validator | 0 | 57 | 119 | 0 |
+| Turns recovered by retry | 0 | 31 | 44 | 0 |
+| Turns that used the fallback | 0 | 19 | 50 | 0 |
+| **Invalid guesses actually played** | **0** | **0** | **0** | **0** |
+| Guesses misled by false hints | 0 | 0 | 0 | 20 |
+| Games where the game lied | 0 | 0 | 0 | 4 |
+| Glitch detected in those games | – | – | – | 2 of 4 |
+| False glitch alarms | 0 | 0 | 0 | 0 |
+
+Raw output: [reports/eval_suite_output.txt](reports/eval_suite_output.txt). The
+JSON reports in [reports/](reports/) include every guess of every game.
+
+**Measuring Claude itself:** `python evaluate.py --model claude --games 9`
+produces the same table for the live model. The first-try-valid rate and the
+average confidence are the interesting numbers there. I did not have an API
+key while I wrote this README, so no Claude numbers are reported here. I'd
+rather leave the column out than make it up.
+
+### Logging and guardrails
+
+| Guardrail | Where | Behavior |
+|-----------|-------|----------|
+| Coach never sees the secret | `GameState` has no secret field (asserted by a test) | Advice cannot leak the answer |
+| Output validation | `validator.validate_suggestion` | Non-integers, repeats and contradicted numbers are rejected with a reason |
+| Retry with feedback | `CoachAgent.suggest` | Up to 3 model calls; each retry includes why the last one failed |
+| Safe fallback | `CoachAgent.suggest` | Binary-search midpoint whenever the model can't be verified |
+| API failures | `ClaudeCoachModel.propose` | Auth, rate-limit, status, connection, refusal and max-token stops become `CoachModelError` and lead to the fallback, never a crash |
+| Structured output | JSON schema via `output_config` | Malformed JSON is still caught; out-of-range confidence is clamped and logged |
+| Contradiction detection | `feasible_interval` | Lying hints are reported instead of guessed through |
+| Audit log | `logs/coach.log` | Every PLAN / ACT / CHECK / FALLBACK line, with timestamps and WARNING on rejections |
+
+Sample from `logs/coach.log`:
+
+```
+2026-11-24 16:32:02,405 INFO    coach.agent: PLAN: range 1-20, 1 hint(s), 5 attempt(s) left -> secret is in 1-9 (9 possible)
+2026-11-24 16:32:02,405 INFO    coach.agent: ACT #1: offline proposed 5 (confidence 1.00)
+2026-11-24 16:32:02,405 INFO    coach.agent: CHECK #1: accepted - Consistent with every hint so far.
+```
+
+---
+
+## 🧭 Design decisions and trade-offs
+
+- **Agentic workflow, not just one API call.** A single prompt that asks for
+  a guess would look like it works, but nothing would check it. The
+  plan → act → check → retry loop is what makes the AI's output safe to act
+  on, and it is what the evaluation measures.
+- **The validator is the source of truth, not the model.** Correctness here is
+  something code can decide, so I let code decide it. The model's job is the
+  part worth having a model for: explaining the move in plain language.
+- **Claude gets the raw hints, not the computed interval.** Handing it the
+  answer range would make the check pointless. With raw hints the model does
+  the reasoning and the validator independently verifies it.
+- **Offline backend as a first-class mode.** The project must run for a
+  reviewer without an API key, and tests must not depend on the network or
+  cost money. The trade-off is that the offline coach is "perfect", so the
+  chaos backend exists to exercise the guardrails honestly.
+- **Fault injection over hoping for failures.** Waiting for Claude to make
+  mistakes would give a guardrail test that rarely fires. `ChaosCoachModel`
+  produces every failure type on demand, with a seed, so "the guardrails hold"
+  is a measured claim.
+- **Don't retry a broken backend.** A rejected *answer* is retried with
+  feedback, but an API *error* goes straight to the fallback. The SDK already
+  retries transient errors, and the player shouldn't wait through three
+  timeouts.
+- **Low effort setting.** Choosing a number from hints is a small reasoning
+  task, and a hint should feel instant. The Claude call uses
+  `effort: "low"`, and server-side refusal fallback is enabled.
+
+---
+
+## 🪞 Reflection
+
+The main lesson is that "the AI's answer" and "the system's answer" should not
+be the same thing. In Modules 1-3 the scariest bug was code that quietly
+caught an error and returned a confident wrong answer. Building the coach was
+the same lesson from the other side: I designed for the model being wrong, put
+a checker between it and the user, and then *measured* whether the checker
+held by breaking the model on purpose. The glitch-mode result also kept me
+honest. A coach that trusts consistent lies can be led astray, and saying that
+plainly is more useful than a 100% headline.
+
+The graded responsible-AI reflection (limitations, misuse, surprises, and how I
+worked with AI) is in **[model_card.md](model_card.md)**.
+
+---
+
+## 📁 Project structure
+
+```
+app.py                 Streamlit game + AI Coach panel
+logic_utils.py         Pure game logic (from Modules 1-3)
+coach/
+  agent.py             Plan → act → check → retry → fallback loop
+  models.py            Claude, offline and chaos backends; prompt + schema
+  validator.py         Feasible-interval math and suggestion validation
+  logging_config.py    File logging to logs/coach.log
+coach_cli.py           Ask the coach from the terminal
+evaluate.py            Reliability harness (full games, JSON reports)
+tests/                 52 pytest tests
+diagrams/architecture.mmd  System diagram (Mermaid source)
+assets/                Images for the README
+reports/               Evaluation and test output
+model_card.md          Limitations, ethics, AI collaboration
+reflection.md          Original Module 1-3 bug-hunt reflection
+```
