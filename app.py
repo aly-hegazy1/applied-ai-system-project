@@ -15,7 +15,13 @@ from logic_utils import (
     update_score,
 )
 
-from coach import ClaudeCoachModel, CoachAgent, GameState, OfflineCoachModel
+from coach import (
+    ChaosCoachModel,
+    ClaudeCoachModel,
+    CoachAgent,
+    GameState,
+    OfflineCoachModel,
+)
 from coach.logging_config import configure_logging
 
 configure_logging()
@@ -63,13 +69,32 @@ if coach_mode == "Claude" and not has_credentials:
     coach_mode = "Offline (rules-based)"
 
 
+st.sidebar.header("Demo mode")
+demo_mode = st.sidebar.radio(
+    "What to demonstrate",
+    ["Normal", "Unreliable AI", "Lying game"],
+    help=(
+        "Unreliable AI: the coach's model gives bad answers 70% of the time, "
+        "to show the validator and fallback catching them. Lying game: the "
+        "game reverses its hint on every 2nd guess (like the original bugs), "
+        "to show the coach detecting contradictory hints."
+    ),
+)
+if demo_mode == "Unreliable AI":
+    st.sidebar.caption("🧪 The AI now answers badly 70% of the time.")
+elif demo_mode == "Lying game":
+    st.sidebar.caption("🐛 The game now lies on every 2nd guess.")
+
+
 @st.cache_resource
-def get_agent(mode: str) -> CoachAgent:
+def get_agent(mode: str, demo: str) -> CoachAgent:
     model = ClaudeCoachModel() if mode == "Claude" else OfflineCoachModel()
+    if demo == "Unreliable AI":
+        model = ChaosCoachModel(model, fault_rate=0.7, seed=random.randint(0, 10**6))
     return CoachAgent(model, max_attempts=3)
 
 
-agent = get_agent(coach_mode)
+agent = get_agent(coach_mode, demo_mode)
 st.sidebar.caption(f"Model: `{agent.model.name}`, up to {agent.max_attempts} tries per hint")
 
 
@@ -146,6 +171,9 @@ def play_guess(guess_int: int):
     # check_guess to tolerate both types; I pushed back and deleted the
     # cast here instead, because the caller was the actual bug.
     outcome = check_guess(guess_int, st.session_state.secret)
+    if demo_mode == "Lying game" and st.session_state.attempts % 2 == 0:
+        # Deliberately reintroduce a glitch: reverse the hint on even turns.
+        outcome = {"Too High": "Too Low", "Too Low": "Too High"}.get(outcome, outcome)
     st.session_state.feedback.append((guess_int, outcome))
     st.session_state.coach_result = None  # old advice is stale now
     message = get_hint_message(outcome)
